@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>工研院會計處 ｜ GAI × Gemini 提示詞產生器</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--teal:#0D9488;--teal-d:#0a6e66;--navy:#0A1628;--ink:#1A1A1A;--gray:#6B7280;--bg:#F7FAFA;}
+*{font-family:'Inter','Noto Sans TC',sans-serif;}
+body{background:var(--bg);color:var(--ink);}
+.navbar{background:var(--navy)!important;}
+.navbar-brand{font-weight:800;color:#fff!important;}
+.hero{background:linear-gradient(135deg,#0A1628,#0d3b3a);color:#fff;padding:64px 0 56px;}
+.hero h1{font-weight:900;font-size:2.4rem;line-height:1.2;}
+.hero .motto{color:#5EEAD4;font-weight:700;letter-spacing:2px;margin-top:12px;}
+.stat{font-size:1.9rem;font-weight:900;color:#5EEAD4;}
+.stat-l{font-size:.85rem;color:#9aa6b2;}
+.info-card{background:#fff;border-radius:16px;box-shadow:0 4px 24px rgba(0,0,0,.06);padding:24px;margin-top:-36px;position:relative;z-index:5;}
+.rce-pill{display:inline-flex;align-items:center;gap:6px;background:#E6FBFA;color:var(--teal-d);border-radius:999px;padding:6px 14px;font-weight:700;font-size:.9rem;margin:4px;}
+.filter-btn{border:2px solid #d8e0e0;background:#fff;color:var(--ink);border-radius:999px;padding:8px 18px;font-weight:600;margin:4px;transition:.15s;font-size:.92rem;}
+.filter-btn.active,.filter-btn:hover{background:var(--teal);border-color:var(--teal);color:#fff;}
+.tcard{background:#fff;border-radius:14px;border:1px solid #e8eded;margin-bottom:14px;overflow:hidden;transition:.15s;}
+.tcard:hover{box-shadow:0 6px 20px rgba(13,148,136,.12);}
+.tcard-head{padding:16px 20px;cursor:pointer;display:flex;align-items:center;gap:12px;}
+.tno{background:var(--teal);color:#fff;font-weight:800;border-radius:8px;min-width:42px;height:42px;display:flex;align-items:center;justify-content:center;font-size:.95rem;}
+.tcard-title{font-weight:700;font-size:1.05rem;margin:0;}
+.tcard-sub{font-size:.8rem;color:var(--gray);}
+.badge-fmt{font-size:.72rem;font-weight:700;padding:3px 8px;border-radius:6px;color:#fff;}
+.tcard-body{padding:0 20px 20px;display:none;}
+.tcard.open .tcard-body{display:block;}
+.tcard.open{box-shadow:0 8px 28px rgba(13,148,136,.18);}
+label.fld{font-weight:700;font-size:.9rem;margin:14px 0 6px;display:block;}
+textarea.form-control{font-size:.9rem;border-radius:10px;border:1.5px solid #dde5e5;}
+textarea.form-control:focus{border-color:var(--teal);box-shadow:0 0 0 .2rem rgba(13,148,136,.15);}
+.matlink{display:inline-flex;align-items:center;gap:6px;background:#FFF4ED;color:#C2410C;border-radius:8px;padding:8px 14px;font-weight:700;font-size:.88rem;text-decoration:none;margin-top:6px;}
+.matlink:hover{background:#ffe6d5;color:#9a3412;}
+.btn-gen{background:var(--teal);border:none;font-weight:700;border-radius:10px;padding:10px 24px;}
+.btn-gen:hover{background:var(--teal-d);}
+.out-box{background:var(--navy);color:#e8f0f0;border-radius:12px;padding:18px;font-size:.88rem;white-space:pre-wrap;margin-top:14px;display:none;line-height:1.6;}
+.out-box.show{display:block;}
+.sec-title{font-weight:900;font-size:1.5rem;margin-bottom:6px;}
+.security{background:#FEF3C7;border-left:5px solid #F59E0B;border-radius:10px;padding:18px 22px;}
+.tool-chip{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid #e0e8e8;border-radius:999px;padding:8px 16px;margin:5px;font-weight:600;color:var(--ink);text-decoration:none;}
+.tool-chip:hover{border-color:var(--teal);color:var(--teal);}
+.instructor{background:var(--navy);color:#fff;border-radius:16px;padding:32px;}
+footer{background:#06101e;color:#9aa6b2;padding:28px 0;text-align:center;font-size:.85rem;}
+</style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg sticky-top">
+ <div class="container"><span class="navbar-brand"><i class="bi bi-robot"></i> 工研院會計處 ｜ AI 提示詞產生器</span></div>
+</nav>
+
+<section class="hero">
+ <div class="container text-center">
+  <h1>GAI × Gemini 高效工作實戰班<br>提示詞產生器</h1>
+  <div class="motto">會用 · 懂用 · 好用 · 每天用</div>
+  <div class="row mt-4 justify-content-center g-4">
+   <div class="col-4 col-md-2"><div class="stat">60</div><div class="stat-l">會計實戰模板</div></div>
+   <div class="col-4 col-md-2"><div class="stat">3</div><div class="stat-l">課程單元</div></div>
+   <div class="col-4 col-md-2"><div class="stat">60</div><div class="stat-l">練習素材</div></div>
+  </div>
+ </div>
+</section>
+
+<div class="container">
+ <div class="info-card">
+  <h5 class="fw-bold mb-2"><i class="bi bi-magic text-teal" style="color:#0D9488"></i> 黃金三角：角色 × 情境 × 期望</h5>
+  <p class="text-muted mb-2" style="font-size:.92rem">選一個模板 → 修改成你的真實情境 → 按「產生提示詞」→ 複製貼到 AI 工具。每個模板都附練習素材，下載後上傳給 AI 一起用。</p>
+  <span class="rce-pill"><i class="bi bi-person-badge"></i> 角色 R</span>
+  <span class="rce-pill"><i class="bi bi-card-text"></i> 情境 C</span>
+  <span class="rce-pill"><i class="bi bi-bullseye"></i> 期望 E</span>
+ </div>
+</div>
+
+<div class="container mt-4">
+ <div id="filters" class="text-center mb-4"></div>
+ <div id="templates"></div>
+</div>
+
+<div class="container my-5">
+ <div class="security">
+  <h6 class="fw-bold mb-2"><i class="bi bi-shield-exclamation"></i> 資安提醒</h6>
+  <ul class="mb-0" style="font-size:.9rem">
+   <li>不要輸入真實機密資料（金額、人名、統編用代號替換）</li>
+   <li>AI 產出一定要人工審核，數字務必驗算後才使用</li>
+   <li>請使用工研院核可的帳號，不要用來路不明的山寨 AI 網站</li>
+  </ul>
+ </div>
+</div>
+
+<div class="container my-5">
+ <h2 class="sec-title">課程用 AI 工具</h2>
+ <div class="mt-3">
+  <a class="tool-chip" href="https://gemini.google.com" target="_blank"><i class="bi bi-google"></i> Gemini</a>
+  <a class="tool-chip" href="https://notebooklm.google.com" target="_blank"><i class="bi bi-journal-text"></i> NotebookLM</a>
+  <a class="tool-chip" href="https://claude.ai" target="_blank"><i class="bi bi-stars"></i> Claude</a>
+  <a class="tool-chip" href="https://manus.ai" target="_blank"><i class="bi bi-cpu"></i> Manus</a>
+ </div>
+</div>
+
+<div class="container my-5">
+ <div class="instructor row align-items-center g-4">
+  <div class="col-md-8">
+   <h3 class="fw-bold">黃敬峰（阿峰老師 / AI 峰哥）</h3>
+   <p class="mb-1" style="color:#5EEAD4">AI 應用與導入顧問 ｜ Autolab 創辦人</p>
+   <p class="mb-0" style="color:#c7d0d8;font-size:.92rem">400+ 家企業合作 · 300+ 場培訓 · 10,000+ 學員實戰驗證<br>國泰、紳捷、富邦金、台灣大哥大、中華電信、工研院 指定合作</p>
+  </div>
+  <div class="col-md-4 text-md-end">
+   <a href="mailto:ai@autolab.cloud" class="btn btn-outline-light btn-sm mb-2"><i class="bi bi-envelope"></i> ai@autolab.cloud</a><br>
+   <a href="https://www.autolab.cloud" target="_blank" class="btn btn-outline-light btn-sm"><i class="bi bi-globe"></i> autolab.cloud</a>
+  </div>
+ </div>
+</div>
+
+<footer>工研院會計處 ｜ GAI × Gemini 高效工作實戰班 ｜ 2026/06/11 ｜ 講師：黃敬峰（阿峰老師）</footer>
+
+<script>
+const TEMPLATES = [{"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "01", "title": "催收逾期款項信", "sub": "應收應付", "tool": "Gemini", "material": "01-逾期應收帳款明細.xlsx", "link": "https://drive.google.com/file/d/1Uavv9GSbCkbTF7umU3tFtXH_eZojAUqY/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的應收帳款管理專家，專精政府研究計畫款項催收，深知催款要催得到錢又不傷關係。", "context": "附件是逾期應收帳款明細。昇陽科技技術授權金 120 萬，逾期 45 天，對方稱「簽核中」但無確切日期，是合作 3 年的夥伴。", "expect": "請寫一封催款信（350 字內）：(1) 先肯定合作關係 (2) 列款項明細與逾期天數 (3) 要求一週內回覆付款日 (4) 說明對雙方結案的影響 (5) 結尾留台階，語氣正式但溫暖。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "02", "title": "廠商付款延遲通知（雙語）", "sub": "對外溝通", "tool": "Gemini", "material": "02-廠商合約付款條款.docx", "link": "https://drive.google.com/file/d/1SneLR3B6SbUI2j50FOnDOxMNe0EXYVKX/view", "fmt": "Word", "role": "你是擁有 40 年經驗的採購與供應商關係專家，專精跨國商務溝通。", "context": "附件是合約付款條款。日商供應商貨款原訂 5/25 付款，因本院年度結算需延至下月初，依條款 5.3 須事前書面通知並協商新付款日。", "expect": "請寫一封中英對照通知信（各 200 字內）：(1) 說明原付款日與延遲原因 (2) 提出新付款日 (3) 致歉並承諾後續準時 (4) 中文正式、英文 polite but professional。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "03", "title": "發票抬頭錯誤退回說明", "sub": "發票憑證", "tool": "Gemini", "material": "03-廠商發票影本.pdf", "link": "https://drive.google.com/file/d/1a7F6pwhb3dhV7p8LrMc28E5HO0Aw39n3/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的會計憑證審核專家，專精統一發票合規。", "context": "附件是廠商開來的發票，抬頭誤植為「工業技術研究院」，正確應為「財團法人工業技術研究院」，須退回重開。", "expect": "請寫一封退回說明信（200 字內）：(1) 客氣說明抬頭錯誤 (2) 給出正確抬頭與統編 (3) 說明重開步驟與期限 (4) 語氣有耐心，讓廠商明白這是必要程序。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "04", "title": "研究人員補助款核銷 FAQ", "sub": "補助核銷", "tool": "Gemini", "material": "04-產發署核銷規範摘錄.pdf", "link": "https://drive.google.com/file/d/19H9sbkW_IrkI1jeltZDMUcUycxJQaB0f/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的政府補助計畫財務管理專家，專精產發署核銷規範與新人教育。", "context": "附件是產發署核銷規範摘錄。研究人員常重複問「補助款怎麼核銷」，想做一份 FAQ 放內網。", "expect": "請依規範製作核銷 FAQ：(1) Q&A 至少 12 題白話 (2) 分人事費/差旅費/設備費/材料費/跨年度五類 (3) 每題標常見錯誤（如品名只寫材料一批會退件）(4) 結尾附會計處分機 (5) 語氣像資深同事帶新人。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "05", "title": "跨部門採購協調回覆", "sub": "內部協作", "tool": "Gemini", "material": "05-計畫主持人來信.docx", "link": "https://drive.google.com/file/d/1sah90FD8dMSz4RUainZN2kKMjeE1kBNg/view", "fmt": "Word", "role": "你是擁有 40 年經驗的研究機構內部溝通專家，最擅長守住財務紀律又不讓對方覺得被刁難。", "context": "附件是計畫主持人來信，他急著結案前買 80 萬高溫爐，但金額須走採購委員會審查（3 週），他覺得會計處卡他、語氣不好。", "expect": "請寫回覆信（400 字內）：(1) 先同理他的時間壓力 (2) 白話說明為何要走委員會（保護他免於稽核風險）(3) 給 2 個替代方案（拆單/調整時程）(4) 表態願協助加速 (5) 語氣像隊友不像關卡。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "06", "title": "月報執行率摘要", "sub": "財報分析", "tool": "Claude", "material": "06-計畫經費執行明細.xlsx", "link": "https://drive.google.com/file/d/1gAytnleyFsYLZmWP61Cd2vdZmTvqmJ2P/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的研究機構財務分析專家，專精把報表濃縮成主管 3 分鐘看懂版。", "context": "附件是計畫經費執行明細。處長常問「重點是什麼、執行率正常嗎」。A038 本月支出含設備採購 30 萬一次性入帳。", "expect": "請整理成一頁摘要：(1) 分本月重點/和上月比/異常警示/下月提醒四區塊 (2) 重點數字用表格含執行率與增減 (3) 異常用主管語言（如設備入帳屬一次性無須擔心）(4) 下月給 2-3 個具體建議。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "07", "title": "出差費超額自付通知", "sub": "發票憑證", "tool": "Gemini", "material": "07-出差費用明細.xlsx", "link": "https://drive.google.com/file/d/1GWhKJxK7UaajRTQh6S85Rx7Yj97DLmOg/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的差旅費核銷專家，專精合規通知撰寫。", "context": "附件是出差費用明細。某研究人員東京出差機票 21,560 元，超出計畫核定上限 18,000 元，超額 3,560 元依規定須本人自付。", "expect": "請寫通知信（250 字內）：(1) 說明超額金額與計算方式 (2) 自付款繳納方式與期限 (3) 後續若未繳的處理 (4) 語氣正式但避免製造衝突。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "08", "title": "新進人員報帳說明", "sub": "教育訓練", "tool": "Gemini", "material": "08-出差報帳作業規定.pdf", "link": "https://drive.google.com/file/d/10cBUtDpQ3WXW15AGZvFOlCoRKsdd83Nf/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的會計教育訓練專家，擅長把規定變成新人看得懂的指引。", "context": "附件是出差報帳作業規定。每季新進研究人員第一次報帳常出錯，想做一份 FAQ。", "expect": "請製作出差報帳 FAQ（6-8 題）：(1) Q&A 白話格式 (2) 涵蓋時限/必備文件/常見退件原因 (3) 每題附一個正確示範 (4) 語氣口語友善，適合貼內網或群發新人。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "09", "title": "跨單位拆帳爭議回覆", "sub": "財報分析", "tool": "Claude", "material": "09-間接費用分攤計算表.xlsx", "link": "https://drive.google.com/file/d/1prpfahHCTPgKaL8MB6lYW-Gu54j2iD-M/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的成本分攤與內部溝通專家。", "context": "附件是間接費用分攤計算表。技術部門質疑為何依人員時數而非面積分攤共用實驗室水電費。", "expect": "請寫一份說明（250 字內）：(1) 邏輯順序為原則依據→計算方式→為何時數優於面積→本季數字舉例 (2) 表態願提供兩種方案試算供比較 (3) 語氣客觀，避免像在辯解，適合主管對主管溝通。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "10", "title": "廠商對帳確認信", "sub": "應收應付", "tool": "Gemini", "material": "10-付款紀錄對帳表.xlsx", "link": "https://drive.google.com/file/d/1v-bEIPnfeCwMDqYBLcWeg3kO3M-cdOm9/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的應付帳款對帳專家。", "context": "附件是付款對帳表。INV-5501 系統顯示已於 5/12 付款 336,000，但廠商主張未收到；另 INV-5503 金額差 500 元。", "expect": "請寫對帳確認信（200 字內）：(1) 列出待釐清的兩筆 (2) 請廠商提供銀行帳號、入帳紀錄、匯款單號 (3) 語氣禮貌有效率，不引起對方誤解為拖款。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "11", "title": "代墊費用補件通知", "sub": "發票憑證", "tool": "Gemini", "material": "11-核銷申請單.docx", "link": "https://drive.google.com/file/d/1dOiz1NU2-omOROJ3hPQCRUmYnjKhs7r2/view", "fmt": "Word", "role": "你是擁有 40 年經驗的核銷審核專家。", "context": "附件是同仁的核銷申請單。代墊材料費 8,500 元，但發票品名只寫「材料一批」、用途未填，不符規定須補件。", "expect": "請寫補件通知（200 字內）：(1) 客氣說明問題 (2) 列出需補的文件（詳細品名明細、用途說明）(3) 給補件截止日 (4) 語氣溫和但明確，讓對方知道下一步。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "12", "title": "設備採購付款條件備忘錄", "sub": "內部協作", "tool": "Claude", "material": "12-廠商報價單.docx", "link": "https://drive.google.com/file/d/1-zS8STKPN-8GxXKKibuqT2kmmdOB32QP/view", "fmt": "Word", "role": "你是擁有 40 年經驗的採購談判顧問。", "context": "附件是德商高溫爐報價單，廠商要求簽約後全額預付 80 萬，但本院慣例為分期（交貨前 30%、驗收後 70%）。", "expect": "請寫一份內部備忘錄（200 字內）給採購同仁參考：(1) 說明分期付款的必要性（保護本院）(2) 常見談判論點 (3) 可接受的替代方案（如預付加保證）(4) 條列清晰、有說服力。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "13", "title": "預借款逾期核銷通知", "sub": "應收應付", "tool": "Gemini", "material": "13-預借款明細.xlsx", "link": "https://drive.google.com/file/d/1Ys_EH4hDJQJXIf48EBA9rqM2RbVbB2V0/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的出納管理專家。", "context": "附件是預借款逾期明細。王○明電光所借 30,000 逾期 21 天未核銷，依規定逾期影響下次借款資格。", "expect": "請寫通知信（250 字內）：(1) 列原借款資訊與核銷期限 (2) 說明逾期後果 (3) 請當事人儘速辦理的明確要求 (4) 語氣嚴謹但不帶情緒。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "14", "title": "月底憑證催辦通知", "sub": "內部協作", "tool": "Gemini", "material": "14-各部門憑證繳交狀況.xlsx", "link": "https://drive.google.com/file/d/1hyNPwWxVM3uZcFfX9Vd6W7rSzLKMT2Wg/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的會計作業協調專家。", "context": "附件是各部門憑證繳交狀況。月結前兩天仍有電光所、生醫所、業務處未繳齊，影響月結。", "expect": "請寫一封群發催辦通知（200 字內）：(1) 列截止時間 (2) 說明未繳會影響月結報表 (3) 提供收件方式與窗口 (4) 語氣積極有禮，讓各部門覺得是幫他們不是施壓。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "15", "title": "稅務疑義回覆稅捐處", "sub": "稅務法規", "tool": "Claude", "material": "15-稅捐處來函.pdf", "link": "https://drive.google.com/file/d/15IKcoiDKtBpu8y32rtqXz1mzVEZFgx2W/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的稅務專家，專精政府機關公文往來。", "context": "附件是國稅局來函，質疑某筆 350 萬技術移轉收入的課稅性質，要求 15 日內說明免稅依據。", "expect": "請草擬正式回覆函（350 字內）：(1) 收文確認 (2) 說明該款項屬研究補助性質 (3) 引用免稅法源依據（用占位符標註待補條號）(4) 表示願配合提供合約等佐證 (5) 公文語氣，不卑不亢。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "16", "title": "會計師查核資料回覆", "sub": "對外溝通", "tool": "Gemini", "material": "16-會計師資料需求清單.docx", "link": "https://drive.google.com/file/d/1RwG7nKC4S1RObFFUvZr0_miWcZyTs6dJ/view", "fmt": "Word", "role": "你是擁有 40 年經驗的財報查核窗口專家。", "context": "附件是會計師的補充資料需求清單（固定資產盤點表、關係人交易明細、備抵呆帳計算表），須 5/30 前提供。", "expect": "請寫一封回覆信（250 字內）：(1) 逐項確認三份資料的提供時間（各差 1-2 天）與格式（Excel）(2) 主動說明哪份需多一點時間及原因 (3) 語氣合作積極，結尾確認對方收件窗口。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "17", "title": "補助計畫餘款繳回簽呈", "sub": "財報分析", "tool": "Claude", "material": "17-計畫收支結算表.xlsx", "link": "https://drive.google.com/file/d/1OmCefvsKdEPtf-T4BDO4e6_BNb722KJs/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的計畫結案財務專家。", "context": "附件是計畫收支結算表，結案餘款 22 萬元（主因一項設備未採購）須依規定繳回補助單位。", "expect": "請草擬簽呈（400 字內）：(1) 主旨 (2) 說明含計畫資訊、餘款來源、計算過程 (3) 擬辦：繳回方式與時程 (4) 敬請核示 (5) 正式公文格式。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "18", "title": "內控自查通知", "sub": "教育訓練", "tool": "Gemini", "material": "18-內控自查要點.pdf", "link": "https://drive.google.com/file/d/1vhpkHw2jgtfjqdwfrqRnjmiYMg8os9E0/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的內控制度顧問。", "context": "附件是內控自查要點。年度稽核前要提醒各部門行政人員自查費用合規，但以往通知太抽象沒人看。", "expect": "請寫一份自查通知（250 字內）：(1) 說明為什麼要自查（趁稽核前自己先抓）(2) 把差旅/採購/計畫費三類各列 2 個白話自查問題 (3) 附「有疑問請聯絡」窗口 (4) 語氣正式但友善，讓人願意配合。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "19", "title": "核銷退件說明", "sub": "補助核銷", "tool": "Gemini", "material": "19-退件核銷單據.pdf", "link": "https://drive.google.com/file/d/1EE6GM65oRChlUW4ePIdGHN2MlqMC1vas/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的核銷審核專家，擅長把退件講得讓人服氣又願意配合。", "context": "附件是退件核銷單據（設備費僅一家報價、計程車未敘事由、材料品名籠統）。", "expect": "請寫退件說明信（250 字內）給申請人周○瑋：(1) 逐項說明退件原因與依據 (2) 每項給明確補正方式 (3) 給補件期限（5 個工作日）(4) 語氣對事不對人，讓對方覺得是幫他過關不是刁難。"}, {"cat": "第 1 小時 · 下對指令", "catKey": "h1", "no": "20", "title": "跨部門會議紀錄整理", "sub": "內部協作", "tool": "Gemini", "material": "20-成本分攤協商會議錄音.mp3", "link": "https://drive.google.com/file/d/1in2EtWQ-E7p-HhfeBReAHPbXCJB40r8J/view", "fmt": "會議錄音", "role": "你是擁有 40 年經驗的會議紀錄專家。", "context": "附件是成本分攤協商會議錄音（約 1 分鐘，主席/技術部門/研發處三方）。", "expect": "請上傳音檔後整理會議紀錄：(1) 會議基本資訊 (2) 討論議題摘要 (3) 決議事項（含負責人、期限）(4) 待追蹤項目 (5) 客觀條列，適合作為正式紀錄發給與會單位。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "01", "title": "跨月簽約金額差異比對", "sub": "跨表比對", "tool": "Gemini", "material": "01-簽約金額_本月vs上月.xlsx", "link": "https://drive.google.com/file/d/1AnfBOuTSvxv0-WWgU8Rtxhx89X1R167a/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的 Excel 報表自動化專家，精通 XLOOKUP 與 Power Query。", "context": "附件有「上月」「本月」兩個 sheet 的簽約明細，約 6-7 筆。我要找出新增、金額被改、已移除三類合約。", "expect": "請給我：(1) 完整公式比對本月 vs 上月，標示三類差異 (2) 設定格式化條件自動上色（新增綠/修改黃/移除紅）(3) 差異摘要：新增幾筆、修改幾筆、金額總變動 (4) 每步驟附操作說明 (5) 教我用 SUMIF 反向驗算結果。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "02", "title": "近五年費用趨勢分析", "sub": "趨勢分析", "tool": "Gemini", "material": "02-近五年費用趨勢.xlsx", "link": "https://drive.google.com/file/d/1RcQILaFhLS2jJTCZQ1pJbsrr9GvENQx6/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的財務數據分析專家，擅長從數字看出趨勢與異常。", "context": "附件是近五年各科目費用彙總。我要快速看出哪個科目在成長、哪一年哪個科目異常。", "expect": "請：(1) 用 Gemini Canvas 畫出五年趨勢圖 (2) 找出波動最大的科目並推測原因（如設備費 2024 暴增後 2025 驟降）(3) 用 3 句話寫出給主管看的趨勢摘要 (4) 建議下年度哪些科目要特別控管。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "03", "title": "SAP 折舊資料整理", "sub": "大量資料", "tool": "Claude", "material": "03-SAP折舊模擬資料.xlsx", "link": "https://drive.google.com/file/d/17IoUAd1HbfBWZnay3g-HDCrnJDj3elbw/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的固定資產與 SAP 資料處理專家。", "context": "附件是 SAP 匯出的折舊資料，分機械/電子/實驗三個 sheet，共 45 筆，欄位有原始成本、耐用年限、已折舊比例。", "expect": "請：(1) 教我把三個 sheet 合併成一張總表的方法 (2) 算出每筆的『剩餘帳面價值』(3) 找出已折舊超過 80% 該汰換評估的設備 (4) 彙總各類別的剩餘價值 (5) 提醒資料量大時怎麼分批處理避免當機。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "04", "title": "發票對帳找差異", "sub": "跨表比對", "tool": "Gemini", "material": "04-發票對帳_廠商vs系統.xlsx", "link": "https://drive.google.com/file/d/14oY0xs_fXnjlQCfTVn26ct_qk1hglsPI/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的應付帳款對帳專家。", "context": "附件有「廠商清單」「系統清單」兩 sheet，各約 12 筆。要核對兩份找出：金額不符、單邊缺漏、重複/多出。", "expect": "請：(1) 用 XLOOKUP 或 Power Query 自動比對（擇優說明）(2) 標示金額不符、缺漏、多出三類 (3) 條件式格式自動上色 (4) 差異摘要 (5) 提醒發票號碼格式不一時怎麼先處理。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "05", "title": "SUMIFS 計畫×科目交叉", "sub": "公式生成", "tool": "Gemini", "material": "05-計畫費用明細.xlsx", "link": "https://drive.google.com/file/d/13DUmbHYwFsUP9-85u6ZrNG8xrziBBUvQ/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的 Excel 函數專家。", "context": "附件是計畫費用流水明細（日期/計畫/科目/金額，約 40 筆）。我要做『計畫 × 科目』雙條件加總交叉表，且要能自動更新。", "expect": "請：(1) 給可直接貼的 SUMIFS 公式 (2) 一步步解釋每個參數 (3) 提醒計畫編號有前後空格或全半形不一致會出錯、怎麼先清理 (4) 附範例 (5) 比較公式版 vs 樞紐版該選哪個。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "06", "title": "三維樞紐分析", "sub": "樞紐分析", "tool": "Gemini", "material": "06-費用樞紐分析資料.xlsx", "link": "https://drive.google.com/file/d/1SHgEC229fq8G0U1JbHMJma3wRjRID4Xr/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的 Excel 樞紐分析專家。", "context": "附件是費用明細（計畫/科目/季度/金額，約 60 筆）。要做『計畫×科目×季度』三維交叉分析。", "expect": "請：(1) 樞紐分析的設定順序（哪些放列、欄、值）(2) 加入計算欄位算各計畫費用佔比 (3) 教我怎麼快速切換維度看不同角度 (4) 常見錯誤排解 (5) 一句話說明樞紐和 SUMIFS 各自適合什麼場合。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "07", "title": "SUMIF 反向驗算 AI 加總", "sub": "AI驗證", "tool": "Gemini", "material": "07-費用明細500筆.xlsx", "link": "https://drive.google.com/file/d/1YvokvTpC3tdRX5k0FFxzID5qGh96vvAz/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的財務數據稽核專家，深信 AI 能加速但不能替你扛責任。", "context": "附件是 200 筆費用明細。我會請 AI 加總『A038 材料費總額』，但不放心要驗算。", "expect": "請：(1) 給 SUMIF 反向驗算公式自己算一次對照 (2) 若兩數不同，教我怎麼快速找出是哪幾筆造成差異 (3) 列出可能出錯原因（篩選錯/科目歸類錯/有空白列）(4) 教我隨機抽 10 筆人工核對 (5) 給一句原則：什麼時候 AI 數字絕對要驗。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "08", "title": "AI 分類隨機抽樣驗證", "sub": "AI驗證", "tool": "Gemini", "material": "08-AI已分類發票.xlsx", "link": "https://drive.google.com/file/d/1Lo4zE4ES2Ox0Po0ajxgqQSMNB9R4rFfo/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的內控與抽樣稽核專家。", "context": "附件是 AI 自動分類後的 30 筆發票，我無法逐筆檢查但怕分錯（其中有幾筆疑似分錯）。", "expect": "請設計抽樣驗證 SOP：(1) 兩階段抽樣（隨機 10% + 高金額全查）(2) Excel 隨機抽樣公式（RAND+INDEX）(3) 驗證紀錄表範本（正確/錯誤/邊緣三類）(4) 找出附件中疑似分錯的那幾筆 (5) 說明抽樣信心區間概念。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "09", "title": "兩階段工作流（分類+信心評分）", "sub": "AI驗證", "tool": "Gemini", "material": "09-待分類發票.xlsx", "link": "https://drive.google.com/file/d/1R6350vveORq4Bzk_11Ut9giJ0892X_NI/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的 AI 工作流設計專家。", "context": "附件是 25 筆待分類發票。我想讓 AI 分類時『老實告訴我哪些不確定』，只人工複核低信心的。", "expect": "請設計兩階段串接 Prompt：(1) 第一階段分類同時給每筆 0-100 信心分數 (2) 第二階段過濾出信心<80 供人工複核 (3) 附 Excel 條件式格式（<80 紅、80-90 黃、>90 綠）(4) 說明信心分數怎麼解讀 (5) 這套流程為什麼比全部人工檢查省時。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "10", "title": "預算執行率儀表板", "sub": "公式生成", "tool": "Gemini", "material": "10-各部門預算執行.xlsx", "link": "https://drive.google.com/file/d/1W5zuDCv0wgMu2ookGi9PRuKQM4f0Pi8J/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的管理報表設計專家。", "context": "附件是各部門預算執行資料。處長每月要看執行率，遇到追加預算時公式常參照錯。", "expect": "請：(1) 用 SUMIFS 動態算各部門實際費用 (2) 用 IFERROR 防止公式錯誤當機 (3) 設計下拉選單切換月份 (4) 用條件式格式把執行率<30% 或>95% 標色 (5) 附公式片段與操作步驟。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "11", "title": "應收帳款帳齡分析", "sub": "公式生成", "tool": "Claude", "material": "11-應收帳款明細.xlsx", "link": "https://drive.google.com/file/d/1fvKRcdNDyUwIMuRm1apkYXyHUIoe30JY/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的應收帳款管理專家。", "context": "附件是 20 筆應收帳款明細（含逾期天數）。我要做帳齡分析。", "expect": "請：(1) 用公式分 0-30/31-60/61-90/90+ 四個帳齡區間 (2) 算各區間金額與佔比 (3) 標出 90+ 天的高風險帳款 (4) 寫一段給主管的帳齡摘要 (5) 建議哪些要優先催收。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "12", "title": "固定資產折舊表自動化", "sub": "公式生成", "tool": "Gemini", "material": "12-固定資產清單.xlsx", "link": "https://drive.google.com/file/d/1RfEcHFKMc_dThXmM8bAo_lwW93qItS_Y/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的固定資產會計專家。", "context": "附件是 25 筆固定資產清單（原始成本/耐用年限/購置日）。要做折舊表。", "expect": "請：(1) 給直線法的月折舊額公式 (2) 給倍數餘額遞減法公式 (3) 用 IF 條件切換兩種折舊方法 (4) 算出每筆的累計折舊與帳面價值 (5) 附範例數字與欄位結構建議。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "13", "title": "Power Query 清理髒資料", "sub": "資料清理", "tool": "Gemini", "material": "13-髒資料待清理.xlsx", "link": "https://drive.google.com/file/d/1plUsBv5U_J3EJdGoP5wjMsXgWE8HQMT7/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的資料清理專家，精通 Power Query。", "context": "附件的費用明細格式很亂：日期有 2026/1/5、2026.1.6、1/9/2026 多種格式；金額欄混入『元』『NT$』『空』和空白；計畫代碼大小寫不一。", "expect": "請給 Power Query 清理步驟：(1) 統一日期格式 (2) 把金額欄的文字、符號、空白清掉轉成數值 (3) 計畫代碼統一大寫去空白 (4) 處理空值 (5) 每步驟用白話說明讓非技術同仁也能跟著做。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "14", "title": "VLOOKUP 升級 XLOOKUP", "sub": "公式生成", "tool": "Gemini", "material": "14-報表查找範本.xlsx", "link": "https://drive.google.com/file/d/1w00CAB9iEF_41NlMVeJWA_hl5JvLeCXs/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的 Excel 函數教學專家。", "context": "附件是廠商主檔。部門報表都用 VLOOKUP，但 ERP 匯出欄位順序常變動導致抓錯欄。", "expect": "請：(1) 用同一情境示範 VLOOKUP vs XLOOKUP 的語法差異 (2) 說明為什麼欄位順序變動時 XLOOKUP 更穩 (3) 給可直接複製的公式範本 (4) 列出什麼時候一定要改用 XLOOKUP (5) 語氣像在教同事，不要太學術。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "15", "title": "月結傳票借貸平衡檢查", "sub": "AI驗證", "tool": "Gemini", "material": "15-月結傳票明細.xlsx", "link": "https://drive.google.com/file/d/1LCQDofNc4YeqCD_rHlEVET2EGTBZFkio/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的總帳與內稽專家。", "context": "附件是 15 張月結傳票（借方/貸方），其中有兩張借貸不平衡。要在月結前自動抓出來。", "expect": "請：(1) 用 SUMIF 按傳票號加總借貸 (2) 用 IF 判斷是否平衡並標記異常 (3) 條件式格式把不平衡傳票自動標紅 (4) 找出附件中不平衡的那兩張 (5) 附公式範例。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "16", "title": "薪資按時數分攤", "sub": "公式生成", "tool": "Gemini", "material": "16-人員時數薪資.xlsx", "link": "https://drive.google.com/file/d/1FI7Dt3r45h-ar5nZnsOnulwEBci0aVa9/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的計畫人事費分攤專家。", "context": "附件是 20 位研究人員的時數與月薪，要按時數分攤薪資到各計畫。", "expect": "請：(1) 設計分攤計算的欄位結構 (2) 用 SUMPRODUCT 算加權分攤金額 (3) 設計驗算公式確認分攤後總額=原始薪資 (4) 附範例 (5) 提醒分攤比例錯會有補稅風險、怎麼防呆。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "17", "title": "多月費用檔案合併", "sub": "大量資料", "tool": "Gemini", "material": "17-多月費用待合併.xlsx", "link": "https://drive.google.com/file/d/1gXoG7Q72ZrcWZsiChEC38aSILLWeHquY/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的資料彙整專家。", "context": "附件有 1-3 月三個 sheet 的費用資料，要合併成一張總表再分析。", "expect": "請：(1) 教我把多個 sheet 快速合併的方法（Power Query 或公式）(2) 合併後按科目彙總 (3) 加一欄標示資料來自哪個月 (4) 算各月各科目小計 (5) 提醒合併時欄位名稱要一致、怎麼先檢查。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "18", "title": "異常費用偵測", "sub": "趨勢分析", "tool": "Claude", "material": "18-各科目月費用.xlsx", "link": "https://drive.google.com/file/d/10yeXH-YbUBfHYc7aNMf6Yd8vvsF1M_Zm/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的費用稽核專家。", "context": "附件是各科目近 5 個月費用，其中委外費 5 月暴增。要設計一套自動偵測異常的方法。", "expect": "請：(1) 設計『異常費用偵測 SOP』5 步驟 (2) 用公式算每科目與前幾月平均的差異百分比 (3) 標出差異>20% 的異常科目 (4) 找出附件中的異常（委外費）(5) 給一個判斷範例。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "19", "title": "跨期年報交叉驗證", "sub": "AI驗證", "tool": "Gemini", "material": "19-跨期年報驗證.xlsx", "link": "https://drive.google.com/file/d/1GqHkIj_Mcw1PPIYAxK9hG48k_tK9c8fI/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的財報內稽專家。", "context": "附件有「各月」明細與「年報」彙總兩 sheet，其中年報有一個科目和 12 個月加總對不上。", "expect": "請：(1) 用 SUMIFS 跨表驗證年報每科目=12 月加總 (2) 做差異追蹤表 (3) 設容差（±100 內可接受）(4) 找出附件中對不上的科目 (5) 列出常見不一致原因（分類差異/重複認列/時間差）。"}, {"cat": "第 2 小時 · Excel 數據", "catKey": "h2", "no": "20", "title": "多 sheet 報表擷取到簡報", "sub": "簡報銜接", "tool": "Gemini", "material": "20-多sheet財務報表.xlsx", "link": "https://drive.google.com/file/d/1aUxk0NrOnHkuydMcm3EYTGyDA6xQ_eLl/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的財務簡報製作專家。", "context": "附件有收入/支出/結餘三個 sheet 的財務報表，我要把它們整理進一份簡報，但不想一張張手動貼。", "expect": "請：(1) 教我用 AI 把三張報表的重點摘出來 (2) 建議每張報表適合用什麼圖表呈現 (3) 產出一份『財務月報簡報』的頁面架構（每頁標題+重點）(4) 說明接下來怎麼丟 Gemini Canvas 視覺化 (5) 提醒數字一定要和原始 Excel 核對過。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "01", "title": "年度結算說明會簡報", "sub": "簡報製作", "tool": "Claude→Canvas", "material": "01-年度結算數據.xlsx", "link": "https://drive.google.com/file/d/1GVRQs1V8oko01_007841fOeSrl_-hgs-/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的財務簡報架構顧問，擅長把數據變成主管聽得懂的故事。", "context": "附件是年度結算數據（收入/支出/結餘與上年對比）。要做一場給各部門的年度結算說明會簡報。", "expect": "請：(1) 設計 10 頁簡報架構，每頁標題+3 重點 (2) 邏輯：今年表現→和去年比→亮點與隱憂→明年方向 (3) 標出哪幾頁適合放圖表 (4) 把結餘成長 30% 說成正面故事 (5) 說明接下來怎麼丟 Gemini Canvas 視覺化。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "02", "title": "固定資產認列調整宣導", "sub": "簡報製作", "tool": "Claude→Canvas", "material": "02-固定資產認列新舊規定.docx", "link": "https://drive.google.com/file/d/1nfWlznG6hbXCLh4jCKAwrN2eYDrpmf5T/view", "fmt": "Word", "role": "你是擁有 40 年經驗的政策宣導簡報專家。", "context": "附件是固定資產認列門檻調整（1 萬→2 萬）的新舊對照。要向各部門行政人員宣導。", "expect": "請設計簡報架構：(1) 邏輯為什麼改→改了什麼→對你的影響→新操作方式→Q&A (2) 每頁標題+3 重點 (3) 用情境案例說明變動前後差異 (4) 加一頁新舊對照表 (5) 語氣讓非財務同仁也聽得懂。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "03", "title": "次年度預算說明簡報", "sub": "簡報製作", "tool": "Claude→Canvas", "material": "03-年度預算數據.xlsx", "link": "https://drive.google.com/file/d/1XBtYAFxz87XikWWH1U6xeE9ouiArKamY/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的預算簡報專家。", "context": "附件是次年度預算數據，設備費成長 66% 特別突出。", "expect": "請：(1) 設計預算說明簡報架構 (2) 用一頁專門說明設備費為何成長（汰換老舊儀器）(3) 各科目成長率用圖表呈現 (4) 預留審計委員可能質疑的 Q&A 頁 (5) 語氣正式可讀給委員聽。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "04", "title": "成本分攤說明簡報", "sub": "簡報製作", "tool": "Claude→Canvas", "material": "04-成本分攤數據.xlsx", "link": "https://drive.google.com/file/d/1QphsBJ6SqbBroGnOs6PiEnWYPAe1mXQt/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的跨部門溝通簡報專家。", "context": "附件是成本分攤數據（時數法 vs 面積法佔比）。技術部門有意見，要做一份說明簡報化解疑慮。", "expect": "請：(1) 設計簡報架構說明為何採時數法 (2) 用對照表呈現兩種方法差異 (3) 用本季實際數字舉例 (4) 表態願提供試算 (5) 語氣客觀不像辯解。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "05", "title": "內控自查結果簡報", "sub": "簡報製作", "tool": "Claude→Canvas", "material": "05-內控自查發現.docx", "link": "https://drive.google.com/file/d/1xjn9KX8RVAek7zkU3gQy45LX552bMV_H/view", "fmt": "Word", "role": "你是擁有 40 年經驗的內控報告簡報專家。", "context": "附件是年度內控自查發現（差旅/採購/計畫費各有問題）。要向主管報告。", "expect": "請：(1) 設計簡報架構：自查範圍→主要發現→風險評估→改善建議 (2) 發現用紅黃綠燈分級 (3) 每個問題對應一個改善行動 (4) 結尾給時程表 (5) 語氣客觀、聚焦解決方案。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "06", "title": "新人教育訓練簡報", "sub": "簡報製作", "tool": "Claude→Canvas", "material": "06-新人訓練大綱.docx", "link": "https://drive.google.com/file/d/1t5_FbWZnjHEHJNa-KkeqZw2RIEmdzbo9/view", "fmt": "Word", "role": "你是擁有 40 年經驗的教育訓練簡報設計專家。", "context": "附件是新進會計人員三週訓練大綱。要做成一份訓練簡報。", "expect": "請：(1) 把三週大綱變成簡報架構 (2) 每週一個 section，列當週學習重點與實作 (3) 加一頁「常見錯誤」提醒 (4) 加一頁新人 FAQ (5) 語氣親切像學長姐帶新人。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "07", "title": "年度財務回顧簡報", "sub": "簡報製作", "tool": "Claude→Canvas", "material": "07-年度財務數據.xlsx", "link": "https://drive.google.com/file/d/1MDV5H--O0rQz3ir5X0fJHfpOOZg60tgc/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的財務回顧簡報專家。", "context": "附件是四季財務數據（收入/支出/結餘）。要做年度回顧簡報。", "expect": "請：(1) 設計回顧簡報架構 (2) 用四季趨勢圖呈現成長 (3) 標出表現最好的一季並說明原因 (4) 一頁總結年度三大成就 (5) 建議用什麼圖表類型。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "08", "title": "計畫成果對外提案", "sub": "簡報製作", "tool": "Manus", "material": "08-計畫成果摘要.docx", "link": "https://drive.google.com/file/d/1Ed1xoH6v7IuzNhUGqMv3Y77W__ooLVMg/view", "fmt": "Word", "role": "你是擁有 40 年經驗的計畫提案專家，擅長用 AI Agent 一次交付完整提案。", "context": "附件是研究計畫成果摘要（A038 高溫材料，良率+15%）。要做一份對外的成果提案爭取第二期。", "expect": "請用 Manus 思路：(1) 規劃完整提案結構（背景→成果→效益→第二期規劃）(2) 把良率提升、專利、技轉包裝成亮點 (3) 設計一頁效益數據視覺化 (4) 結尾的行動呼籲 (5) 說明 Manus 和自己做簡報的差別。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "09", "title": "財務月報視覺化簡報", "sub": "簡報製作", "tool": "Claude→Canvas", "material": "09-月報數據.xlsx", "link": "https://drive.google.com/file/d/1pv4HZJxA6s1-zfNylCRsT3JqLyFsgN6l/view", "fmt": "Excel", "role": "你是擁有 40 年經驗的月報視覺化專家。", "context": "附件是財務月報數據（本月/上月/預算對比）。要做一份視覺化月報簡報。", "expect": "請：(1) 設計一頁式月報儀表板架構 (2) 收入支出結餘用什麼圖表 (3) 標出超出或低於預算的科目 (4) 一句話寫本月財務狀況總結 (5) 提醒數字要和原始 Excel 核對。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "10", "title": "稽核結果報告簡報", "sub": "簡報製作", "tool": "Claude→Canvas", "material": "10-稽核發現.docx", "link": "https://drive.google.com/file/d/1iJw89dp7diPR2SbgQToMBMOil6hqtjsm/view", "fmt": "Word", "role": "你是擁有 40 年經驗的稽核報告簡報專家。", "context": "附件是內部稽核發現（差旅費逾期、採購未三家報價）。要向上級報告。", "expect": "請：(1) 設計稽核報告簡報架構 (2) 發現按風險等級排序 (3) 每個發現配對應建議與負責單位 (4) 加一頁改善時程 (5) 語氣客觀、對事不對人。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "11", "title": "差旅費規範問答庫", "sub": "NotebookLM", "tool": "NotebookLM", "material": "11-差旅費核銷規定.pdf", "link": "https://drive.google.com/file/d/1InN9-7SKc0UMyP-Eyjyvadw6hKWRsHqa/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的知識管理顧問，專精把規範變成隨問隨答的知識庫。", "context": "附件是差旅費核銷規定。同仁常問住宿上限、計程車能不能報。要做問答助手。", "expect": "請給建置步驟：(1) 上傳到 NotebookLM 的設定 (2) 示範 5 個同仁最常問的問題怎麼問 (3) 怎麼確認回答有標來源 (4) 哪些情況會答不準需人工補 (5) 上線前檢查清單。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "12", "title": "補助核銷問答庫", "sub": "NotebookLM", "tool": "NotebookLM", "material": "12-補助計畫核銷規範.pdf", "link": "https://drive.google.com/file/d/1K6pGm4Bkg5O-jYlD4O4WMhh8ZQZAo3UR/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的補助計畫知識管理專家。", "context": "附件是補助計畫核銷規範。研究人員常問核銷細節。要做問答助手減少重複詢問。", "expect": "請：(1) 建置步驟 (2) 示範研究人員會問的 5 個問題 (3) 怎麼讓答案引用規範條文 (4) 規範改版時怎麼更新 (5) 怎麼把這個助手推廣給全院研究人員。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "13", "title": "內控手冊問答庫", "sub": "NotebookLM", "tool": "NotebookLM", "material": "13-內部控制手冊.pdf", "link": "https://drive.google.com/file/d/1xabt3XH0dvm-6QlKCJOqM_C-V6i_ciRd/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的內控制度顧問。", "context": "附件是內部控制手冊（授權核決、職務分工、憑證保存）。新人常搞不清楚授權層級。要做問答助手。", "expect": "請：(1) 建置步驟 (2) 示範問「5 萬的費用誰核」「請款付款能不能同一人」(3) 怎麼確認答案可追溯 (4) 哪些跨條文判斷需人工 (5) 給新人使用前的檢查清單。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "14", "title": "稅務查詢知識庫", "sub": "NotebookLM", "tool": "NotebookLM", "material": "14-稅務常見規定.pdf", "link": "https://drive.google.com/file/d/1JmDY88NIS3HsaD0676arXagnmUqw_-1y/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的稅務知識管理專家。", "context": "附件是常用稅務規定（扣繳、營業稅、印花稅）。同仁常臨時要查扣繳率。要做查詢助手。", "expect": "請：(1) 建置步驟 (2) 示範問「講師費超過多少要扣繳」「境外勞務扣繳率」(3) 怎麼確認引用正確條文 (4) 稅法更新時的維護方式 (5) 提醒稅務問題最後仍須人工確認的原因。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "15", "title": "採購規範問答庫", "sub": "NotebookLM", "tool": "NotebookLM", "material": "15-採購作業規範.pdf", "link": "https://drive.google.com/file/d/15YkhAcGY7MjL_YKWWNlZdSTzGFVTdmkx/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的採購制度顧問。", "context": "附件是採購作業規範（小額/比價/公開招標門檻）。同仁常問金額到多少要走哪種程序。要做問答助手。", "expect": "請：(1) 建置步驟 (2) 示範問「80 萬採購要走什麼程序」「誰能驗收」(3) 怎麼讓答案標出處 (4) 哪些情況需人工判斷 (5) 上線檢查清單。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "16", "title": "財產管理問答庫", "sub": "NotebookLM", "tool": "NotebookLM", "material": "16-財產管理辦法.pdf", "link": "https://drive.google.com/file/d/1tTANK9gjmHwVOn5AQ1tbDvDNrUB0kDgw/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的財產管理顧問。", "context": "附件是財產管理辦法（分類、盤點、報廢）。盤點季同仁常問報廢流程。要做問答助手。", "expect": "請：(1) 建置步驟 (2) 示範問「設備報廢要什麼程序」「多久盤點一次」(3) 怎麼確認可追溯 (4) 跨辦法判斷的限制 (5) 給盤點人員使用前檢查清單。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "17", "title": "歷年會議紀錄庫", "sub": "NotebookLM", "tool": "NotebookLM", "material": "17-歷年會議紀錄合集.docx", "link": "https://drive.google.com/file/d/1bDJq-TIxs79J0Pb3jDXD7iLgOKkibryk/view", "fmt": "Word", "role": "你是擁有 40 年經驗的會議知識管理專家。", "context": "附件是會計處歷次會議紀錄合集。同仁常忘記「上次某議題的決議」。要做可問答的會議庫。", "expect": "請：(1) 建置步驟 (2) 示範問「上次討論成本分攤的結論是什麼」「月結時程改成幾號」(3) 怎麼讓答案標出自哪次會議 (4) 新會議紀錄怎麼持續加入 (5) 這對決議追蹤的價值。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "18", "title": "新人問答助手", "sub": "NotebookLM", "tool": "NotebookLM", "material": "18-新進人員手冊.pdf", "link": "https://drive.google.com/file/d/1yxcA_QrfYNo9XTDzqkfE6QzBRs4vYbTK/view", "fmt": "PDF", "role": "你是擁有 40 年經驗的新人 onboarding 專家。", "context": "附件是新進人員手冊。新人第一個月問題最多。要做一個讓新人自己查的問答助手。", "expect": "請：(1) 建置步驟 (2) 示範新人會問的 5 個問題 (3) 怎麼確認答案準確可追溯 (4) 手冊更新時的維護 (5) 怎麼讓新人願意先查再問。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "19", "title": "歷年稽核案例庫", "sub": "NotebookLM", "tool": "NotebookLM", "material": "19-歷年稽核案例.docx", "link": "https://drive.google.com/file/d/13mmRsvQQGP2irGkIh4fIF_AW__TnlgJS/view", "fmt": "Word", "role": "你是擁有 40 年經驗的稽核知識管理專家。", "context": "附件是歷年稽核案例。要做成教育訓練用的可問答案例庫，讓同仁從案例學習避免重蹈覆轍。", "expect": "請：(1) 建置步驟 (2) 示範問「歷年最常見的稽核問題」「設備採購被糾正過什麼」(3) 怎麼確認答案有引用案例 (4) 新案例怎麼累積 (5) 怎麼把它變成年度教育訓練素材。"}, {"cat": "第 3 小時 · 簡報知識庫", "catKey": "h3", "no": "20", "title": "全處 FAQ 知識庫", "sub": "NotebookLM", "tool": "NotebookLM", "material": "20-會計處FAQ.docx", "link": "https://drive.google.com/file/d/1hOoGmlMRkfUYnT6ChJ0UZXcrRUcBBn4h/view", "fmt": "Word", "role": "你是擁有 40 年經驗的知識庫建置專家。", "context": "附件是會計處常見問答 FAQ。要做成一個全處共用、隨問隨答的 FAQ 知識庫，減少重複詢問。", "expect": "請：(1) 建置步驟 (2) 示範怎麼問效果最好 (3) 怎麼確認答案標來源不亂編 (4) 怎麼持續擴充 FAQ (5) 怎麼推廣讓全處同仁都來用、把『問人』變成『問知識庫』。"}];
+const CATS = ["全部","第 1 小時 · 下對指令","第 2 小時 · Excel 數據","第 3 小時 · 簡報知識庫"];
+const FMTCOLOR = {"Excel":"#1EA85C","Word":"#2B579A","PDF":"#E34D4D","會議錄音":"#FF6B35"};
+let curCat = "全部";
+
+function esc(s){return (s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+
+function renderFilters(){
+ document.getElementById("filters").innerHTML = CATS.map(c=>
+  `<button class="filter-btn ${c===curCat?'active':''}" onclick="setCat('${c}')">${c}${c==='全部'?' ('+TEMPLATES.length+')':''}</button>`
+ ).join("");
+}
+function setCat(c){curCat=c;renderFilters();renderTemplates();}
+
+function renderTemplates(){
+ const list = TEMPLATES.filter(t=>curCat==="全部"||t.cat===curCat);
+ document.getElementById("templates").innerHTML = list.map((t,i)=>{
+  const gi = TEMPLATES.indexOf(t);
+  const fmtc = FMTCOLOR[t.fmt]||"#0D9488";
+  const mat = t.link ? `<a class="matlink" href="${t.link}" target="_blank"><i class="bi bi-paperclip"></i> 練習素材：${esc(t.material)}</a>` : "";
+  return `<div class="tcard" id="tc${gi}">
+   <div class="tcard-head" onclick="toggle(${gi})">
+    <div class="tno">${t.no}</div>
+    <div class="flex-grow-1"><p class="tcard-title">${esc(t.title)}</p>
+     <span class="tcard-sub">${t.cat} · ${esc(t.sub)}</span></div>
+    <span class="badge-fmt" style="background:${fmtc}">${t.fmt}</span>
+    <i class="bi bi-chevron-down"></i>
+   </div>
+   <div class="tcard-body">
+    ${mat}
+    <label class="fld"><i class="bi bi-person-badge"></i> 角色 R</label>
+    <textarea class="form-control" id="r${gi}" rows="3">${esc(t.role)}</textarea>
+    <label class="fld"><i class="bi bi-card-text"></i> 情境 C</label>
+    <textarea class="form-control" id="c${gi}" rows="4">${esc(t.context)}</textarea>
+    <label class="fld"><i class="bi bi-bullseye"></i> 期望 E</label>
+    <textarea class="form-control" id="e${gi}" rows="4">${esc(t.expect)}</textarea>
+    <div class="mt-3">
+     <button class="btn btn-gen text-white" onclick="gen(${gi})"><i class="bi bi-magic"></i> 產生提示詞</button>
+     <span class="text-muted ms-2" style="font-size:.85rem">推薦工具：<b>${esc(t.tool)}</b></span>
+    </div>
+    <div class="out-box" id="o${gi}"></div>
+   </div></div>`;
+ }).join("");
+}
+
+function toggle(i){document.getElementById("tc"+i).classList.toggle("open");}
+
+function gen(i){
+ const r=document.getElementById("r"+i).value.trim();
+ const c=document.getElementById("c"+i).value.trim();
+ const e=document.getElementById("e"+i).value.trim();
+ const p = `${r}\n\n${c}\n\n${e}`;
+ const box=document.getElementById("o"+i);
+ box.textContent=p; box.classList.add("show");
+ navigator.clipboard.writeText(p).then(()=>{
+  const old=box.textContent;
+  const tip=document.createElement("div");
+  tip.innerHTML='<div style="color:#5EEAD4;font-weight:700;margin-bottom:8px"><i class="bi bi-check-circle"></i> 已複製到剪貼簿！貼到 '+esc(TEMPLATES[i].tool)+' 即可</div>';
+  box.prepend(tip.firstChild);
+ });
+}
+
+renderFilters();renderTemplates();
+</script>
+</body>
+</html>
