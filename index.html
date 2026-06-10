@@ -108,6 +108,12 @@
 .material-link { display:inline-flex; align-items:center; gap:8px; background:var(--brand-teal-light); border:1px solid var(--brand-teal); color:var(--brand-teal-dark); border-radius:8px; padding:10px 16px; font-weight:700; text-decoration:none; margin-bottom:16px; }
 .material-link:hover { background:#99F6E4; color:var(--brand-teal-dark); }
 .fmt-tag { font-size:.72rem; font-weight:700; color:#fff; padding:2px 8px; border-radius:5px; }
+.mat-folder { display:block; text-decoration:none; background:#fff; border:1.5px solid rgba(13,148,136,0.2); border-radius:12px; padding:20px; text-align:center; transition:all .2s; height:100%; }
+.mat-folder:hover { border-color:var(--brand-teal); box-shadow:0 6px 18px rgba(13,148,136,0.15); transform:translateY(-2px); }
+.mat-folder-icon { font-size:2rem; margin-bottom:8px; }
+.mat-folder-name { font-weight:700; color:var(--brand-navy); font-size:1rem; }
+.mat-folder-desc { font-size:.82rem; color:#6B7280; margin:6px 0 12px; }
+.mat-folder-cta { display:inline-block; background:var(--brand-teal-light); color:var(--brand-teal-dark); font-weight:700; font-size:.85rem; padding:6px 16px; border-radius:20px; }
 </style>
 </head>
 <body>
@@ -156,6 +162,41 @@
         <div class="ethics-item"><span class="ethics-icon">🧮</span><p><strong>數字必驗算：</strong>AI 算的數字一定要用 SUMIF 反向驗算或抽樣核對後才使用</p></div>
         <div class="ethics-item"><span class="ethics-icon">🤝</span><p><strong>人機分工：</strong>AI 做第一版草稿，專業判斷與最終責任在你——你是機長</p></div>
         <div class="ethics-item"><span class="ethics-icon">🌐</span><p><strong>用對工具：</strong>使用工研院核可帳號，不用來路不明的山寨 AI 網站</p></div>
+      </div>
+
+      <!-- 課程主簡報內嵌 -->
+      <div class="slides-card">
+        <div class="slides-header">
+          <h5><i class="bi bi-easel me-2"></i>課程主簡報（47 頁）</h5>
+          <a href="https://docs.google.com/presentation/d/1NF9AL4EqcDRURjCD_eTY7OnyFpC0VUiR/edit" target="_blank"><i class="bi bi-box-arrow-up-right me-1"></i>開啟完整簡報</a>
+        </div>
+        <div class="slides-body">
+          <iframe src="https://docs.google.com/presentation/d/1NF9AL4EqcDRURjCD_eTY7OnyFpC0VUiR/embed?start=false&loop=false&delayms=5000" allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+        </div>
+      </div>
+
+      <!-- 課程素材庫下載 -->
+      <div class="card mb-4">
+        <div class="card-header bg-white p-3">
+          <h5 class="mb-0"><i class="bi bi-folder2-open me-2"></i>課程素材庫（60 份練習檔，依單元分類）</h5>
+        </div>
+        <div class="card-body p-4">
+          <p class="text-muted mb-3" style="font-size:.9rem">下方每個案例都附對應素材；也可整批開啟資料夾下載。素材皆為模擬資料，不含真實機密。</p>
+          <div class="row">
+            <div class="col-md-4 mb-3"><a href="https://drive.google.com/drive/folders/134XlTOtKvYnvEGfRYQ-VpDViH_oI9swG" target="_blank" class="mat-folder">
+              <div class="mat-folder-icon">✍️</div><div class="mat-folder-name">第 1 小時 · 下對指令</div>
+              <div class="mat-folder-desc">20 份（信件 / 規範 / 發票 / 會議錄音）</div>
+              <div class="mat-folder-cta"><i class="bi bi-folder2-open"></i> 開啟資料夾</div></a></div>
+            <div class="col-md-4 mb-3"><a href="https://drive.google.com/drive/folders/1VQxqHJeILsOgF8aS6ZmyvcKuqJ0gQLr2" target="_blank" class="mat-folder">
+              <div class="mat-folder-icon">📊</div><div class="mat-folder-name">第 2 小時 · Excel 數據</div>
+              <div class="mat-folder-desc">20 份 Excel（含留錯驗證檔）</div>
+              <div class="mat-folder-cta"><i class="bi bi-folder2-open"></i> 開啟資料夾</div></a></div>
+            <div class="col-md-4 mb-3"><a href="https://drive.google.com/drive/folders/1_JiPyLAzvO6QpeONXj4m4eudM4AJpxfd" target="_blank" class="mat-folder">
+              <div class="mat-folder-icon">📑</div><div class="mat-folder-name">第 3 小時 · 簡報知識庫</div>
+              <div class="mat-folder-desc">20 份（簡報源檔 / 規範 PDF）</div>
+              <div class="mat-folder-cta"><i class="bi bi-folder2-open"></i> 開啟資料夾</div></a></div>
+          </div>
+        </div>
       </div>
 
       <div class="card">
